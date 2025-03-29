@@ -107,3 +107,76 @@ nav a:hover::after {
     from, to { opacity: 1; }
     50% { opacity: 0; }
 }
+
+/* Cooling Panel Styles */
+.hidden {
+    display: none;
+}
+
+#cooling-panel {
+    margin: 2rem 0;
+    padding: 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 3px;
+}
+
+.temp-gauge {
+    position: relative;
+    height: 20px;
+    background: #333;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.temp-bar {
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #00ff41, #ff9900);
+    transition: width 0.5s ease;
+}
+
+.temp-reading {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    line-height: 20px;
+    font-size: 0.8rem;
+}
+
+.cooling-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#cool-btn {
+    background: var(--primary);
+    color: var(--background);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#cool-btn:hover {
+    background: var(--secondary);
+}
+
+.cooling-status {
+    font-size: 0.9rem;
+    color: var(--secondary);
+}
+
+/* Temperature states */
+.critical {
+    color: #ff3333;
+    animation: pulse-alert 0.5s infinite;
+}
+
+@keyframes pulse-alert {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
