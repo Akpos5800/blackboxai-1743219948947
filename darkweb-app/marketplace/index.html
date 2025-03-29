@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | Onion Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <style>
+        .listing {
+            border: 1px dashed var(--secondary);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .listing h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        .listing p {
+            margin-bottom: 0.5rem;
+        }
+        .price {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="connection-status">
+            <span class="status-indicator"></span>
+            <span>Tor connection established</span>
+        </div>
+        <h1>Marketplace</h1>
+        <div id="listings"></div>
+        <div class="disclaimer">
+            WARNING: These are simulated listings. No real products or services are being offered.
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">← Back to Gateway</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script src="market.js"></script>
+</body>
+</html>
