@@ -62,6 +62,49 @@ function updateCryptoTicker() {
     }
 }
 
+// Temperature monitoring
+let currentTemp = 36;
+let isCoolingActive = false;
+let tempInterval;
+
+function updateTemperature() {
+    // Simulate temperature changes
+    const baseTemp = isCoolingActive ? 35 : 45;
+    currentTemp = Math.min(
+        baseTemp + Math.random() * 15, // Base range
+        85 // Max safe temp
+    );
+    
+    // Update UI
+    const tempBar = document.querySelector('.temp-bar');
+    const tempReading = document.querySelector('.temp-reading');
+    const statusElement = document.querySelector('.cooling-status');
+    
+    tempBar.style.width = `${Math.min(100, (currentTemp / 85) * 100)}%`;
+    tempReading.textContent = `${Math.round(currentTemp)}°C`;
+    
+    // Update status
+    if (currentTemp > 70) {
+        tempBar.style.background = 'linear-gradient(90deg, #ff3333, #ff9900)';
+        statusElement.textContent = 'Status: CRITICAL';
+        statusElement.classList.add('critical');
+    } else if (isCoolingActive) {
+        tempBar.style.background = 'linear-gradient(90deg, #00ff41, #008f11)';
+        statusElement.textContent = 'Status: Cooling Active';
+        statusElement.classList.remove('critical');
+    } else {
+        tempBar.style.background = 'linear-gradient(90deg, #00ff41, #ff9900)';
+        statusElement.textContent = 'Status: Inactive';
+        statusElement.classList.remove('critical');
+    }
+}
+
+function toggleCooling() {
+    isCoolingActive = !isCoolingActive;
+    const btn = document.getElementById('cool-btn');
+    btn.textContent = isCoolingActive ? 'Deactivate Cooling' : 'Activate Cooling';
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     typeWriter();
@@ -73,4 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.className = 'blink';
     cursor.textContent = '_';
     typingElement.appendChild(cursor);
+    
+    // Setup cooling functionality
+    document.getElementById('cool-btn').addEventListener('click', toggleCooling);
+    tempInterval = setInterval(updateTemperature, 2000);
+    
+    // Show cooling panel when nav link clicked
+    document.querySelector('a[href="#cooling"]').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('cooling-panel').classList.toggle('hidden');
+    });
 });
