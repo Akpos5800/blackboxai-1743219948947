@@ -1,0 +1,109 @@
+:root {
+    --primary: #00ff41;
+    --secondary: #008f11;
+    --background: #0a0a0a;
+    --terminal: #121212;
+    --text: #e0e0e0;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--primary);
+    font-family: 'Inconsolata', monospace;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.terminal {
+    background-color: var(--terminal);
+    border: 1px solid var(--secondary);
+    border-radius: 3px;
+    padding: 2rem;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+}
+
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    margin-right: 10px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+#typing-effect {
+    min-height: 60px;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 0.8rem;
+}
+
+nav a {
+    color: var(--primary);
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+nav a::after {
+    content: '>';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+nav a:hover::after {
+    opacity: 1;
+}
+
+.disclaimer {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--secondary);
+    border-top: 1px dashed var(--secondary);
+    padding-top: 1rem;
+}
+
+.blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
+}
