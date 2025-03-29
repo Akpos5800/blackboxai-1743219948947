@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat | Onion Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet">
+    <style>
+        .chat-container {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid var(--secondary);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .message {
+            margin-bottom: 0.8rem;
+        }
+        .username {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        .time {
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+        .message-input {
+            width: 100%;
+            background: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--primary);
+            padding: 0.5rem;
+            font-family: 'Inconsolata', monospace;
+        }
+        .self-destruct {
+            color: #ff5555;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="connection-status">
+            <span class="status-indicator"></span>
+            <span>Tor connection established</span>
+        </div>
+        <h1>Secure Chat</h1>
+        <div class="chat-container" id="chat-messages"></div>
+        <div class="self-destruct">
+            <input type="checkbox" id="self-destruct" checked>
+            <label for="self-destruct">Enable self-destruct (messages disappear after 10 seconds)</label>
+        </div>
+        <input type="text" class="message-input" id="message-input" placeholder="Type your message...">
+        <div class="disclaimer">
+            WARNING: This is a simulation. No real encrypted communication is occurring.
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">← Back to Gateway</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script src="chat.js"></script>
+</body>
+</html>
